@@ -8,7 +8,6 @@
     </div>
 <?php endif; ?>
 <form method="post" class="card card-body">
-    <input type="hidden" name="csrf_token" value="<?= escape($_SESSION['csrf_token']) ?>">
     <p class="text-secondary">Los campos con * son obligatorios.</p>
     <div class="row g-3">
         <?php foreach ($fields as $key => $field): ?>

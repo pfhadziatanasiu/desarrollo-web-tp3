@@ -1,10 +1,4 @@
 <?php
-session_start();
-
-if (empty($_SESSION['csrf_token'])) {
-    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-}
-
 $fields = [
     'name' => ['label' => 'Nombre', 'max' => 100, 'required' => true],
     'last_name' => ['label' => 'Apellido', 'max' => 100, 'required' => true],
@@ -52,14 +46,6 @@ function showError(string $message, int $status): void
     echo '<a class="btn btn-secondary" href="index.php">Volver a clientes</a>';
     require __DIR__ . '/footer.php';
     exit;
-}
-
-function checkPostToken(): void
-{
-    $token = $_POST['csrf_token'] ?? '';
-    if (!is_string($token) || !hash_equals($_SESSION['csrf_token'], $token)) {
-        showError('El formulario venció. Volvé a cargar la página e intentá nuevamente.', 403);
-    }
 }
 
 function findClient(PDO $pdo): array

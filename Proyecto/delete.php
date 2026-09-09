@@ -5,7 +5,6 @@ require __DIR__ . '/config/database.php';
 try {
     $client = findClient($pdo);
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        checkPostToken();
         $statement = $pdo->prepare('DELETE FROM clients WHERE id = :id');
         $statement->execute(['id' => $client['id']]);
         header('Location: index.php', true, 303);
@@ -23,7 +22,6 @@ require __DIR__ . '/includes/header.php';
     <p>¿Querés borrar al cliente <strong><?= escape($client['name'] . ' ' . $client['last_name']) ?></strong> (ID <?= escape($client['id']) ?>)?</p>
     <p class="text-danger">Esta acción no se puede deshacer.</p>
     <form method="post" class="d-flex gap-2">
-        <input type="hidden" name="csrf_token" value="<?= escape($_SESSION['csrf_token']) ?>">
         <a href="index.php" class="btn btn-secondary">Cancelar</a>
         <button type="submit" class="btn btn-danger">Borrar cliente</button>
     </form>

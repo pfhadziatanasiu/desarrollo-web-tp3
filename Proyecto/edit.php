@@ -11,7 +11,6 @@ try {
 $id = $client['id'];
 $errors = [];
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    checkPostToken();
     [$client, $errors] = validateClient($_POST, $fields);
     if (!$errors) {
         try {
