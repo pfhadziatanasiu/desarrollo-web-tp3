@@ -6,7 +6,8 @@ Aplicación para gestionar clientes.
 
 1. Copiar esta carpeta dentro de `htdocs` de XAMPP.
 2. Iniciar Apache y MySQL desde XAMPP.
-3. Abrir `http://localhost/Proyecto/index.php` (ajustar la dirección si la carpeta tiene otro nombre).
+3. Importar `data/database.sql` desde phpMyAdmin para crear la base de datos y la tabla de clientes.
+4. Abrir `http://localhost/Proyecto/index.php`.
 
 ## Cómo usar la interfaz
 
