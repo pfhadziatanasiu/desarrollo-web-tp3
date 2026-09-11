@@ -5,7 +5,7 @@ require __DIR__ . '/config/database.php';
 try {
     $statement = $pdo->prepare('SELECT id, name, last_name, email, phone, address, city, country, created_at, updated_at FROM clients ORDER BY id DESC');
     $statement->execute();
-    $clients = $statement->fetchAll();
+    $clients = $statement->fetchAll();  
 } catch (PDOException $exception) {
     error_log($exception->getMessage());
     showError('No se pudo cargar el listado de clientes.', 500);
